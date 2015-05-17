@@ -1,0 +1,25 @@
+.app-content {
+  width: 100%;
+  max-width: 500px; }
+  .app-content form {
+    padding: 15px; }
+
+md-card {
+  margin: 15px; }
+  md-card .meta {
+    padding: 15px; }
+    md-card .meta h3 {
+      word-break: break-all; }
+      md-card .meta h3 .author {
+        font-size: 0.5em; }
+    md-card .meta p .tag:after {
+      content: ",";
+      text-decoration: none;
+      display: inline-block;
+      color: #000;
+      margin-right: 10px; }
+    md-card .meta p .tag:last-child:after {
+      display: none;
+      margin-right: 0; }
+
+/*# sourceMappingURL=main.css.map */

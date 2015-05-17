@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flickr Search</title>
+  <link rel="stylesheet" href="vendor/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="resources/css/main.css">
+</head>
+<body ng-app="flickrApp" ng-controller="photosController" layout="column" layout-align="top center">
+  
+  <md-toolbar>
+
+    <div class="md-toolbar-tools">
+      <span class="md-flex">Flickr Search</span>
+    </div>
+
+  </md-toolbar>
+
+  <md-content layout="column" layout-align="center center">
+
+    <div class="app-content">
+      
+      <form ng-submit="search()">
+        <md-input-container flex>
+          <label>Search</label>
+          <input ng-model="searchText">
+        </md-input-container>
+      </form>
+
+      <md-card ng-repeat="pic in results.photos.photo">
+        <img ng-src="{{ photoUrl(pic) }}" title="{{ pic.title }}" alt="{{ pic.description._content | limitTo: 100 }}" class="md-card-image">
+        <div class="meta">
+          <h3><a href="{{ photoPageUrl(pic) }}">{{ pic.title }}</a> <span class="author">by <a href="{{ authorPageUrl(pic) }}/">{{ pic.ownername }}</a></span></h3>
+          <p>{{ pic.description._content | limitTo: 100 }} <a ng-show="pic.description._content.length > 100" ng-href="{{ photoPageUrl(pic) }}">more info...</a></p>
+          <p ng-show="pic.tags.length > 1">Tags: <a ng-repeat="tag in (pic.tags.split(' '))" href="{{ tagPageUrl(tag) }}" class="tag">{{ tag }}</a></p>
+        </div>
+      </md-card>
+
+    </div>
+
+  </md-content>
+
+  <script src="vendor/angular/angular.min.js"></script>
+  <script src="vendor/angular-aria/angular-aria.min.js"></script>
+  <script src="vendor/angular-animate/angular-animate.min.js"></script>
+  <script src="vendor/hammerjs/hammer.min.js"></script>
+  <script src="vendor/angular-material/angular-material.min.js"></script>
+  <script src="resources/js/app.js"></script>
+  
+</body>
+</html>
